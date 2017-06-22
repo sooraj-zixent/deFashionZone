@@ -363,8 +363,8 @@
 
     <!-- Plugin JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.8.0/xlsx.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.8.0/jszip.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.10.5/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.10.5/jszip.js"></script>
 
 
     <!-- Theme JavaScript -->
@@ -373,6 +373,21 @@
 
     <script src="js/item-list.js"></script>
     <script src="js/excel-parsing.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var parser = new ExcelParser();
+            var errorLog = parser.parseFile(callback);
+            console.log(errorLog);
+        });
+        var callback = function(data){
+            if(data.errorMap.length > 0){
+                console.log(data.errorMap);
+            }else{
+                alert("Suceess");
+            }
+            console.log(data);
+        }
+    </script>
 
 </body>
 
